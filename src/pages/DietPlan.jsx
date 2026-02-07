@@ -8,7 +8,8 @@ export default function DietPlan() {
         weight: '',
         height: '',
         injury: 'none',
-        injuryType: 'fracture' // 'fracture' or 'strain'
+        injuryType: 'fracture', // 'fracture' or 'strain'
+        dietType: 'non-veg' // 'veg' or 'non-veg'
     });
 
     const [result, setResult] = useState(null);
@@ -23,7 +24,7 @@ export default function DietPlan() {
 
     const calculatePlan = (e) => {
         e.preventDefault();
-        const { age, gender, weight, height, injury, injuryType } = formData;
+        const { age, gender, weight, height, injury, injuryType, dietType } = formData;
 
         if (!age || !weight || !height) return;
 
@@ -64,19 +65,72 @@ export default function DietPlan() {
         let minerals = [];
         let avoid = [];
         let superfoods = [];
+        let mealPlan = {};
 
         if (injury === 'yes' && injuryType === 'fracture') {
             minerals = ['Calcium', 'Vitamin D', 'Vitamin K'];
             avoid = ['Alcohol (slows bone healing)', 'Excessive Salt (calcium loss)', 'Excessive Caffeine'];
-            superfoods = ['Dairy/Fortified Plant Milk', 'Leafy Greens (Kale, Spinach)', 'Fatty Fish (Salmon, Sardines)'];
+
+            if (dietType === 'non-veg') {
+                superfoods = ['Dairy/Fortified Plant Milk', 'Leafy Greens (Kale, Spinach)', 'Fatty Fish (Salmon, Sardines)'];
+                mealPlan = {
+                    breakfast: { name: 'Oatmeal with Berries & Whey Protein', desc: 'Calcium from milk/whey and fiber from oats.' },
+                    lunch: { name: 'Grilled Chicken Salad with Quinoa', desc: 'Lean protein + complex carbs.' },
+                    snack: { name: 'Greek Yogurt with Almonds', desc: 'High calcium and healthy fats.' },
+                    dinner: { name: 'Baked Salmon with Steamed Broccoli', desc: 'Omega-3s and Vitamin K.' }
+                };
+            } else {
+                superfoods = ['Dairy/Fortified Plant Milk', 'Leafy Greens (Kale, Spinach)', 'Chia Seeds/Flaxseeds'];
+                mealPlan = {
+                    breakfast: { name: 'Oatmeal with Berries & Plant Protein', desc: 'Fortified milk for Calcium and fiber from oats.' },
+                    lunch: { name: 'Quinoa & Chickpea Salad', desc: 'Complete plant protein + complex carbs.' },
+                    snack: { name: 'Greek Yogurt (or Fortified Soy) with Almonds', desc: 'High calcium.' },
+                    dinner: { name: 'Tofu Stir-fry with Broccoli', desc: 'Calcium-set tofu and Vitamin K from broccoli.' }
+                };
+            }
+
         } else if (injury === 'yes' && injuryType === 'strain') {
             minerals = ['Vitamin C', 'Zinc', 'Magnesium'];
             avoid = ['Processed Sugars (inflammatory)', 'Trans Fats (fried foods)', 'Alcohol (dehydrating)'];
-            superfoods = ['Citrus Fruits/Berries', 'Nuts & Seeds (Pumpkin/Chia)', 'Lean Meats/Legumes'];
+
+            if (dietType === 'non-veg') {
+                superfoods = ['Citrus Fruits/Berries', 'Nuts & Seeds', 'Lean Meats (Chicken/Turkey)'];
+                mealPlan = {
+                    breakfast: { name: 'Scrambled Eggs with Spinach & Toast', desc: 'Choline and protein for muscle repair.' },
+                    lunch: { name: 'Turkey Breast Sandwich on Whole Wheat', desc: 'Lean protein and Zinc.' },
+                    snack: { name: 'Orange & Pumpkin Seeds', desc: 'Vitamin C and Magnesium boost.' },
+                    dinner: { name: 'Lean Beef Stir-fry with Bell Peppers', desc: 'Iron, Zinc and Vitamin C.' }
+                };
+            } else {
+                superfoods = ['Citrus Fruits/Berries', 'Nuts & Seeds', 'Legumes/Lentils'];
+                mealPlan = {
+                    breakfast: { name: 'Tofu Scramble with Spinach & Toast', desc: 'Protein and Iron implementation.' },
+                    lunch: { name: 'Lentil Soup with Whole Wheat Roll', desc: 'Zinc and fiber rich.' },
+                    snack: { name: 'Orange & Pumpkin Seeds', desc: 'Vitamin C and Magnesium boost.' },
+                    dinner: { name: 'Black Bean Chili with Bell Peppers', desc: 'Protein, Fiber and Vitamin C.' }
+                };
+            }
         } else {
             minerals = ['General Multivitamin', 'Iron', 'B12'];
             avoid = ['Processed Foods', 'Sugary Drinks', 'Deep Fried Foods'];
-            superfoods = ['Mixed Berries', 'Whole Grains', 'Lean Proteins'];
+
+            if (dietType === 'non-veg') {
+                superfoods = ['Mixed Berries', 'Whole Grains', 'Lean Proteins'];
+                mealPlan = {
+                    breakfast: { name: 'Egg White Omelet with Veggies', desc: 'Low fat, high protein start.' },
+                    lunch: { name: 'Grilled Chicken Wrap', desc: 'Balanced macronutrients.' },
+                    snack: { name: 'Apple & Peanut Butter', desc: 'Fiber and healthy fats.' },
+                    dinner: { name: 'Grilled Fish with Asparagus', desc: 'Light, high protein dinner.' }
+                };
+            } else {
+                superfoods = ['Mixed Berries', 'Whole Grains', 'Plant Proteins (Beans/Lentils)'];
+                mealPlan = {
+                    breakfast: { name: 'Smoothie Bowl with Seeds', desc: 'Antioxidant rich start.' },
+                    lunch: { name: 'Hummus & Veggie Wrap', desc: 'Fiber and plant protein.' },
+                    snack: { name: 'Apple & Peanut Butter', desc: 'Fiber and healthy fats.' },
+                    dinner: { name: 'Lentil Curry with Brown Rice', desc: 'Complete protein source.' }
+                };
+            }
         }
 
         setResult({
@@ -87,7 +141,8 @@ export default function DietPlan() {
             fiber: fiberGrams,
             minerals,
             avoid,
-            superfoods
+            superfoods,
+            mealPlan
         });
     };
 
@@ -177,6 +232,32 @@ export default function DietPlan() {
                                     placeholder="175"
                                     required
                                 />
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Diet Preference</label>
+                                <div className="grid grid-cols-2 gap-2">
+                                    <button
+                                        type="button"
+                                        onClick={() => setFormData({ ...formData, dietType: 'veg' })}
+                                        className={`py-2 px-4 rounded-lg text-sm font-semibold transition-all ${formData.dietType === 'veg'
+                                                ? 'bg-green-600 text-white shadow-md'
+                                                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                            }`}
+                                    >
+                                        Veg
+                                    </button>
+                                    <button
+                                        type="button"
+                                        onClick={() => setFormData({ ...formData, dietType: 'non-veg' })}
+                                        className={`py-2 px-4 rounded-lg text-sm font-semibold transition-all ${formData.dietType === 'non-veg'
+                                                ? 'bg-red-600 text-white shadow-md'
+                                                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                            }`}
+                                    >
+                                        Non-Veg
+                                    </button>
+                                </div>
                             </div>
 
                             <div>
@@ -296,7 +377,7 @@ export default function DietPlan() {
                                             </h4>
                                             <ul className="space-y-2">
                                                 {result.avoid.map((item, idx) => (
-                                                    <li key={idx} className="flex items-start text-sm text-gray-600">
+                                                    <li key={idx} className="flex items-start text-sm text-gray-60">
                                                         <span className="w-1.5 h-1.5 bg-red-400 rounded-full mt-1.5 mr-2 flex-shrink-0"></span>
                                                         {item}
                                                     </li>
@@ -328,34 +409,34 @@ export default function DietPlan() {
 
                                 {/* Sample Meal Structure */}
                                 <div className="bg-white rounded-2xl shadow-xl p-6 border border-gray-100">
-                                    <h3 className="font-bold text-gray-900 mb-4">Daily Meal Structure</h3>
+                                    <h3 className="font-bold text-gray-900 mb-4">Daily Meal Structure ({formData.dietType === 'veg' ? 'Vegetarian' : 'Non-Vegetarian'})</h3>
                                     <div className="space-y-4">
                                         <div className="flex flex-col sm:flex-row gap-4 p-4 rounded-xl bg-gray-50">
                                             <div className="w-20 font-bold text-gray-500 text-sm uppercase pt-1">Breakfast</div>
                                             <div className="flex-1">
-                                                <p className="text-gray-900 font-medium">Oatmeal with Berries & Protein Shake</p>
-                                                <p className="text-sm text-gray-500 mt-1">Focus on fiber (oats) and antioxidants (berries) to start the day. High protein for repair.</p>
+                                                <p className="text-gray-900 font-medium">{result.mealPlan.breakfast.name}</p>
+                                                <p className="text-sm text-gray-500 mt-1">{result.mealPlan.breakfast.desc}</p>
                                             </div>
                                         </div>
                                         <div className="flex flex-col sm:flex-row gap-4 p-4 rounded-xl bg-gray-50">
                                             <div className="w-20 font-bold text-gray-500 text-sm uppercase pt-1">Lunch</div>
                                             <div className="flex-1">
-                                                <p className="text-gray-900 font-medium">Grilled Chicken/Tofu Salad with Quinoa</p>
-                                                <p className="text-sm text-gray-500 mt-1">Lean protein source + complex carbs. Add olive oil dressing for healthy fats.</p>
+                                                <p className="text-gray-900 font-medium">{result.mealPlan.lunch.name}</p>
+                                                <p className="text-sm text-gray-500 mt-1">{result.mealPlan.lunch.desc}</p>
                                             </div>
                                         </div>
                                         <div className="flex flex-col sm:flex-row gap-4 p-4 rounded-xl bg-gray-50">
                                             <div className="w-20 font-bold text-gray-500 text-sm uppercase pt-1">Snack</div>
                                             <div className="flex-1">
-                                                <p className="text-gray-900 font-medium">Greek Yogurt with Nuts/Seeds</p>
-                                                <p className="text-sm text-gray-500 mt-1">Calcium boost (yogurt) + Magnesium/Zinc (pumpkin seeds).</p>
+                                                <p className="text-gray-900 font-medium">{result.mealPlan.snack.name}</p>
+                                                <p className="text-sm text-gray-500 mt-1">{result.mealPlan.snack.desc}</p>
                                             </div>
                                         </div>
                                         <div className="flex flex-col sm:flex-row gap-4 p-4 rounded-xl bg-gray-50">
                                             <div className="w-20 font-bold text-gray-500 text-sm uppercase pt-1">Dinner</div>
                                             <div className="flex-1">
-                                                <p className="text-gray-900 font-medium">Baked Salmon with Steamed Broccoli</p>
-                                                <p className="text-sm text-gray-500 mt-1">Omega-3s for inflammation control. Vitamin K & C from broccoli.</p>
+                                                <p className="text-gray-900 font-medium">{result.mealPlan.dinner.name}</p>
+                                                <p className="text-sm text-gray-500 mt-1">{result.mealPlan.dinner.desc}</p>
                                             </div>
                                         </div>
                                     </div>
