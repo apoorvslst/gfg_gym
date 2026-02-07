@@ -1,48 +1,36 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import MuscleAnatomy from '../components/MuscleAnatomy';
 
 export default function Home() {
     return (
         <div className="flex flex-col">
-            {/* Hero Section - Split Layout */}
-            <section id="hero" className="min-h-screen flex items-center px-4 py-6">
-                <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
-                    {/* Left Half - Text Content */}
-                    <div className="space-y-8">
-                        <div>
-                            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight">
-                                <span className="text-blue-600">Physio Friend</span>
-                            </h1>
-                            <p className="mt-6 text-xl md:text-2xl text-gray-600 leading-relaxed">
-                                Your personal AI-powered physiotherapy assistant. Track your progress,
-                                get personalized exercises, and recover faster with real-time posture analysis.
-                            </p>
-                        </div>
-
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <Link
-                                to="/signup"
-                                className="px-8 py-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl text-center text-lg"
-                            >
-                                Start Recovery
-                            </Link>
-                            <a
-                                href="#video"
-                                className="px-8 py-4 bg-white text-blue-600 border-2 border-blue-600 font-bold rounded-lg hover:bg-blue-50 transition-all text-center text-lg"
-                            >
-                                Watch Demo
-                            </a>
-                        </div>
-
-                        <div className="pt-4 text-sm text-gray-500">
-                            <p>💡 <strong>Tip:</strong> Hover over muscles on the right to explore targeted exercises</p>
-                        </div>
+            {/* Hero Section - Centered Layout */}
+            <section id="hero" className="min-h-screen flex items-center justify-center px-4 py-20 bg-gradient-to-b from-white to-gray-50">
+                <div className="max-w-4xl mx-auto w-full text-center space-y-10">
+                    <div>
+                        <h1 className="text-6xl md:text-7xl lg:text-8xl font-extrabold text-gray-900 leading-tight tracking-tight">
+                            <span className="text-blue-600">Physio Friend</span>
+                        </h1>
+                        <p className="mt-8 text-2xl md:text-3xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+                            Your personal AI-powered physiotherapy assistant. Track your progress,
+                            get personalized exercises, and recover faster with real-time posture analysis.
+                        </p>
                     </div>
 
-                    {/* Right Half - Interactive Muscle Anatomy */}
-                    <div className="h-[600px] md:h-[700px]">
-                        <MuscleAnatomy />
+                    <div className="flex flex-col sm:flex-row gap-6 justify-center mt-8">
+                        <Link
+                            to="/signup"
+                            className="px-10 py-5 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-700 transition-all shadow-xl hover:shadow-2xl text-xl transform hover:-translate-y-1"
+                        >
+                            Start Recovery
+                        </Link>
+                        <a
+                            href="#video"
+                            className="px-10 py-5 bg-white text-blue-600 border-2 border-blue-600 font-bold rounded-xl hover:bg-blue-50 transition-all text-xl transform hover:-translate-y-1"
+                        >
+                            Watch Demo
+                        </a>
                     </div>
                 </div>
             </section>
