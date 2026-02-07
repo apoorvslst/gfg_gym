@@ -3,7 +3,7 @@ export const physioData = [
         id: 'neck',
         name: 'Neck (Cervical Spine)',
         focus: 'Alignment and stabilization.',
-        image: 'https://images.unsplash.com/photo-1544367563-12123d8965cd?q=80&w=2070&auto=format&fit=crop',
+        image: 'https://imgs.search.brave.com/Eq5CyNq3l7HyN4x5afHUsskXejOFzWhMUhrOmr5SB8c/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wNzAv/NDAwLzE0OS9zbWFs/bC9oZWFsdGgteW91/bmctbWFuLWV4cGVy/aWVuY2luZy1uZWNr/LXBhaW4tYW5kLWRp/c2NvbWZvcnQtYXQt/aG9tZS1waG90by5q/cGc',
         exercises: [
             {
                 name: 'Chin Tucks',
@@ -67,7 +67,7 @@ export const physioData = [
         id: 'shoulders',
         name: 'Shoulders & Rotator Cuff',
         focus: 'Glenohumeral stability and mobility.',
-        image: 'https://images.unsplash.com/photo-1532384748853-8f552e96381c?q=80&w=2068&auto=format&fit=crop',
+        image: 'https://imgs.search.brave.com/hClCYOQqzSh3YnKMfpy1BqJqZfGewGqS6zNpYuy-O1M/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/bXNrZG9yc2V0Lm5o/cy51ay93cC1jb250/ZW50L3VwbG9hZHMv/MjAyMS8wNC9Sb3Rh/dG9yLWN1ZmYtcmVs/YXRlZC1zaG91bGRl/ci1wYWluLXBhbmVs/LnBuZw',
         exercises: [
             {
                 name: 'Banded External Rotation',
@@ -145,7 +145,7 @@ export const physioData = [
         id: 'core-back',
         name: 'Core & Lower Back',
         focus: 'Spinal decompression and stability.',
-        image: 'https://images.unsplash.com/photo-1574680096141-1cddd32e01f5?q=80&w=2070&auto=format&fit=crop',
+        image: 'https://imgs.search.brave.com/5qJ84c29aYOoX83zboAZgcKg8tuT0BAuJShgLQO41_0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zYTFz/M29wdGltLnBhdGll/bnRwb3AuY29tL2Fz/c2V0cy9pbWFnZXMv/cHJvdmlkZXIvcGhv/dG9zLzI3OTg0ODQu/anBlZw',
         exercises: [
             {
                 name: 'Bird-Dog',
@@ -223,7 +223,7 @@ export const physioData = [
         id: 'hips-glutes',
         name: 'Hips & Glutes',
         focus: 'Gait stability and hip mobility.',
-        image: 'https://images.unsplash.com/photo-1579758629938-03607ccdbaba?q=80&w=2070&auto=format&fit=crop',
+        image: 'https://imgs.search.brave.com/HvtYPFqLSWQnYvqnAcHylN9qIOJ8-_MkIJe43ChucS0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9lcDM2/MC5jb20uYXUvd3At/Y29udGVudC91cGxv/YWRzLzIwMjQvMDIv/R2x1dGUtQnJpZGdl/LWZvci1CYWNrLVBh/aW4tMTAyNHg2OTIu/anBn',
         exercises: [
             {
                 name: 'Clamshells',
@@ -301,7 +301,7 @@ export const physioData = [
         id: 'knees-quads',
         name: 'Knees & Quads',
         focus: 'Patellar tracking and joint strength.',
-        image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aHQlMjBrbmVlJTJDcXVhZHxlbnwwfHwwfHx8MA%3D%3D',
+        image: 'https://imgs.search.brave.com/m5CO7CY2ymGkbxamNgrs9FHqfyDaQdBY3MiAS952ilE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMuY2xldmVsYW5k/Y2xpbmljLm9yZy90/cmFuc2Zvcm0vU3Rv/cnlQYW5lbC8yNjI2/Y2EzYS0wYTNhLTQy/OTUtYmZiYS1iZDll/MjA1MzhlNjkva25l/ZVBhaW5Xb3JzZS0x/MDY5NzI1MTg2LTc3/MHg1MzMtMV9qcGc_/dz0zODQwJnE9NzU',
         exercises: [
             {
                 name: 'Quad Sets',
@@ -379,7 +379,7 @@ export const physioData = [
         id: 'ankles-calves',
         name: 'Ankles & Calves',
         focus: 'Balance and foundation.',
-        image: 'https://images.unsplash.com/photo-1599447332720-add7cb7e62c8?q=80&w=2070&auto=format&fit=crop',
+        image: 'https://imgs.search.brave.com/iaKPJWtwkaN_FnPPiU4uIr3-uLKc0FO-m9PPVz_bNPE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/Y3JlYXRlLnZpc3Rh/LmNvbS9hcGkvbWVk/aWEvc21hbGwvMjE1/MzgxNzM2L3N0b2Nr/LXBob3RvLWFua2xl/LWluanVyeS1wYWlu/LWpvZ2dpbmctZXhl/cmNpc2luZy1vdXRk/b29ycw',
         exercises: [
             {
                 name: 'Standing Calf Raises',

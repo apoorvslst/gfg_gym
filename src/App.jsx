@@ -8,6 +8,8 @@ import GymExercises from './pages/GymExercises';
 
 import Physio from './pages/Physio';
 
+import PoseTracker from './components/PoseTracker';
+
 function App() {
   return (
     <AuthProvider>
@@ -19,6 +21,7 @@ function App() {
             <Route path="signup" element={<Signup />} />
             <Route path="exercises" element={<GymExercises />} />
             <Route path="physio" element={<Physio />} />
+            <Route path="tracker" element={<PoseTracker />} />
           </Route>
         </Routes>
       </Router>

@@ -27,7 +27,7 @@ export default function Physio() {
                             <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-shadow duration-300">
                                 <div className="relative aspect-video bg-gray-900">
                                     <iframe
-                                        src={exercise.videoUrl}
+                                        src={`${exercise.videoUrl}?modestbranding=1&rel=0&showinfo=0&controls=1`}
                                         title={exercise.name}
                                         className="absolute top-0 left-0 w-full h-full"
                                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
