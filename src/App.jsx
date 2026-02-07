@@ -6,6 +6,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import GymExercises from './pages/GymExercises';
 
+import Physio from './pages/Physio';
+
 function App() {
   return (
     <AuthProvider>
@@ -16,6 +18,7 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="signup" element={<Signup />} />
             <Route path="exercises" element={<GymExercises />} />
+            <Route path="physio" element={<Physio />} />
           </Route>
         </Routes>
       </Router>

@@ -38,6 +38,7 @@ export default function Navbar() {
                             ) : (
                                 <Link to="/" className="text-gray-500 hover:text-blue-600 font-medium transition-colors">Home</Link>
                             )}
+                            <Link to="/physio" className="text-gray-500 hover:text-blue-600 font-medium transition-colors">Physio</Link>
                             <Link to="/exercises" className="text-gray-500 hover:text-blue-600 font-medium transition-colors">Exercises</Link>
                         </div>
                     </div>
