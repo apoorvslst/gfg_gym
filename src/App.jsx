@@ -7,6 +7,7 @@ import Signup from './pages/Signup';
 import GymExercises from './pages/GymExercises';
 
 import Physio from './pages/Physio';
+import DietPlan from './pages/DietPlan';
 
 import PoseTracker from './components/PoseTracker';
 
@@ -21,6 +22,7 @@ function App() {
             <Route path="signup" element={<Signup />} />
             <Route path="exercises" element={<GymExercises />} />
             <Route path="physio" element={<Physio />} />
+            <Route path="diet-plan" element={<DietPlan />} />
             <Route path="tracker" element={<PoseTracker />} />
           </Route>
         </Routes>
