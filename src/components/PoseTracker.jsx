@@ -116,9 +116,9 @@ const PoseTracker = () => {
     }, []);
 
     return (
-        <div className="flex flex-col md:flex-row h-screen bg-gray-900 text-white overflow-hidden">
-            {/* Left: Camera Feed & Overlay */}
-            <div className="relative w-full md:w-2/3 h-1/2 md:h-full flex items-center justify-center bg-black">
+        <div className="flex flex-col md:flex-row w-full h-full min-h-[500px] bg-gray-900 text-white overflow-hidden rounded-xl">
+            {/* Camera Feed & Overlay - Full Width */}
+            <div className="relative w-full h-full flex items-center justify-center bg-black">
                 <Webcam
                     ref={webcamRef}
                     className="absolute inset-0 w-full h-full object-contain"
@@ -129,14 +129,6 @@ const PoseTracker = () => {
                     ref={canvasRef}
                     className="absolute inset-0 w-full h-full object-contain z-10"
                 />
-            </div>
-
-            {/* Right: Live Data JSON */}
-            <div className="w-full md:w-1/3 h-1/2 md:h-full bg-gray-800 p-4 overflow-y-auto border-l border-gray-700">
-                <h2 className="text-xl font-bold mb-4 text-blue-400">Live Vector Analysis (JSON2)</h2>
-                <div className="bg-gray-900 p-4 rounded-lg font-mono text-xs text-green-400 break-words whitespace-pre-wrap shadow-inner">
-                    {jsonOutput ? JSON.stringify(jsonOutput, null, 2) : "Creating Vector Space..."}
-                </div>
             </div>
         </div>
     );

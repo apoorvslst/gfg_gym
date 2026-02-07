@@ -9,7 +9,8 @@ export default function DietPlan() {
         height: '',
         injury: 'none',
         injuryType: 'fracture', // 'fracture' or 'strain'
-        dietType: 'non-veg' // 'veg' or 'non-veg'
+        dietType: 'non-veg', // 'veg' or 'non-veg'
+        disease: 'none' // 'none', 'diabetes', 'hypertension'
     });
 
     const [result, setResult] = useState(null);
@@ -24,7 +25,7 @@ export default function DietPlan() {
 
     const calculatePlan = (e) => {
         e.preventDefault();
-        const { age, gender, weight, height, injury, injuryType, dietType } = formData;
+        const { age, gender, weight, height, injury, injuryType, dietType, disease } = formData;
 
         if (!age || !weight || !height) return;
 
@@ -131,6 +132,83 @@ export default function DietPlan() {
                     dinner: { name: 'Lentil Curry with Brown Rice', desc: 'Complete protein source.' }
                 };
             }
+
+            // Disease Specific Logic
+            if (disease === 'diabetes') {
+                minerals.push('Chromium', 'Magnesium');
+                avoid.push('Refined Sugars', 'Sweets/Desserts', 'High GI Fruits (Mango, Grapes)', 'Fruit Juices');
+                superfoods.push('Bitter Gourd', 'Fenugreek Seeds', 'Cinnamon', 'Chia Seeds');
+
+                // Modify meal descriptions for diabetes
+                Object.keys(mealPlan).forEach(key => {
+                    if (mealPlan[key].name.includes('Oatmeal')) {
+                        mealPlan[key].name = mealPlan[key].name.replace('Oatmeal', 'Steel-cut Oats (Low GI)');
+                    }
+                    if (mealPlan[key].name.includes('Rice')) {
+                        mealPlan[key].name = mealPlan[key].name.replace('Rice', 'Brown Rice/Quinoa');
+                    }
+                    if (mealPlan[key].name.includes('Toast')) {
+                        mealPlan[key].name = mealPlan[key].name.replace('Toast', 'Multigrain Toast');
+                    }
+                    if (mealPlan[key].name.includes('Sandwich')) {
+                        mealPlan[key].name = mealPlan[key].name.replace('Sandwich', 'Whole Grain Sandwich');
+                    }
+                    if (mealPlan[key].name.includes('Smoothie')) {
+                        mealPlan[key].name = 'Vegetable & Berry Smoothie (Low GI)';
+                    }
+                });
+            }
+
+        }
+
+        switch (disease) {
+            case 'hypertension':
+                minerals.push('Potassium', 'Magnesium', 'Calcium');
+                avoid.push('Excess Sodium', 'Processed Meats', 'Pickles/Canned Foods');
+                superfoods.push('Bananas', 'Spinach', 'Beets', 'Garlic');
+                break;
+            case 'pcos':
+                minerals.push('Zinc', 'Magnesium', 'Chromium');
+                avoid.push('Refined Carbs', 'Sugary Drinks', 'Processed Soya (sometimes)', 'Dairy (if sensitive)');
+                superfoods.push('Cinnamon', 'Flaxseeds', 'Berries', 'Leafy Greens');
+                // PCOS often benefits from lower carb
+                mealPlan.dinner.desc += " (Low Carb recommended)";
+                break;
+            case 'thyroid':
+                minerals.push('Selenium', 'Iodine', 'Zinc');
+                avoid.push('Raw Cruciferous Veggies (Broccoli/Cauliflower)', 'Soy Products', 'Processed Foods', 'Gluten (if sensitive)');
+                superfoods.push('Brazil Nuts (Selenium)', 'Seaweed (Iodine)', 'Eggs', 'Yogurt');
+                break;
+            case 'cholesterol':
+                minerals.push('Niacin', 'Magnesium', 'Potassium');
+                avoid.push('Trans Fats', 'Red Meat', 'Full Fat Dairy', 'Fried Foods');
+                superfoods.push('Oats (Soluble Fiber)', 'Avocado', 'Almonds', 'Fatty Fish (Omega-3)');
+                Object.keys(mealPlan).forEach(key => {
+                    if (mealPlan[key].name.includes('Egg')) {
+                        mealPlan[key].name = mealPlan[key].name.replace('Egg', 'Egg Whites');
+                    }
+                });
+                break;
+            case 'gerd':
+                minerals.push('Magnesium', 'Potassium');
+                avoid.push('Spicy Foods', 'Citrus Fruits', 'Caffeine', 'Late Night Meals', 'Tomato Sauce');
+                superfoods.push('Ginger', 'Oatmeal', 'Melon', 'Banana');
+                // GERD modifications
+                if (mealPlan.dinner) {
+                    mealPlan.dinner.desc += " (Eat 3 hours before bed)";
+                    if (mealPlan.dinner.name.includes('Chili') || mealPlan.dinner.name.includes('Curry')) {
+                        mealPlan.dinner.name = 'Baked Chicken/Fish with Steamed Veggies (Mild)';
+                    }
+                }
+                break;
+            case 'anemia':
+                minerals.push('Iron', 'Vitamin C (for absorption)', 'B12');
+                avoid.push('Tea/Coffee with meals (blocks Iron)', 'Calcium rich foods with Iron meals');
+                superfoods.push('Spinach', 'Red Meat (in moderation)', 'Lentils', 'Citrus Fruits');
+                break;
+            default:
+                // existing cases handled below or generic
+                break;
         }
 
         setResult({
@@ -241,8 +319,8 @@ export default function DietPlan() {
                                         type="button"
                                         onClick={() => setFormData({ ...formData, dietType: 'veg' })}
                                         className={`py-2 px-4 rounded-lg text-sm font-semibold transition-all ${formData.dietType === 'veg'
-                                                ? 'bg-green-600 text-white shadow-md'
-                                                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                            ? 'bg-green-600 text-white shadow-md'
+                                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                                             }`}
                                     >
                                         Veg
@@ -251,13 +329,32 @@ export default function DietPlan() {
                                         type="button"
                                         onClick={() => setFormData({ ...formData, dietType: 'non-veg' })}
                                         className={`py-2 px-4 rounded-lg text-sm font-semibold transition-all ${formData.dietType === 'non-veg'
-                                                ? 'bg-red-600 text-white shadow-md'
-                                                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                            ? 'bg-red-600 text-white shadow-md'
+                                            : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                                             }`}
                                     >
                                         Non-Veg
                                     </button>
                                 </div>
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-1">Medical Condition</label>
+                                <select
+                                    name="disease"
+                                    value={formData.disease}
+                                    onChange={handleInputChange}
+                                    className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all"
+                                >
+                                    <option value="none">None</option>
+                                    <option value="diabetes">Diabetes (Sugar Control)</option>
+                                    <option value="hypertension">Hypertension (BP Control)</option>
+                                    <option value="pcos">PCOS/PCOD (Hormonal Balance)</option>
+                                    <option value="thyroid">Thyroid (Hypothyroidism)</option>
+                                    <option value="cholesterol">High Cholesterol (Heart Health)</option>
+                                    <option value="gerd">GERD/Acid Reflux (Digestive)</option>
+                                    <option value="anemia">Iron Deficiency Anemia</option>
+                                </select>
                             </div>
 
                             <div>

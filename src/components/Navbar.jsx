@@ -33,7 +33,6 @@ export default function Navbar() {
                             {isHome ? (
                                 <>
                                     <a href="#video" className="text-gray-500 hover:text-blue-600 font-medium transition-colors">How it Works</a>
-                                    <a href="#posture" className="text-gray-500 hover:text-blue-600 font-medium transition-colors">Analyzer</a>
                                 </>
                             ) : (
                                 <Link to="/" className="text-gray-500 hover:text-blue-600 font-medium transition-colors">Home</Link>

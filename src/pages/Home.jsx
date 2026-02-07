@@ -82,7 +82,7 @@ export default function Home() {
             <section id="posture" className="py-24 px-4 bg-white">
                 <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">AI Posture Analyzer</h2>
+                        <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-6">AI Posture Tracker</h2>
                         <p className="text-lg text-gray-600 mb-8">
                             Our advanced computer vision technology checks your form in real-time.
                             Get immediate feedback on your posture to prevent injuries and maximize exercise effectiveness.
@@ -102,9 +102,9 @@ export default function Home() {
                                 </li>
                             ))}
                         </ul>
-                        <button className="mt-10 px-8 py-4 bg-gray-900 text-white font-bold rounded-lg hover:bg-gray-800 transition-colors">
-                            Try Analyzer Now
-                        </button>
+                        <Link to="/exercises" className="inline-block mt-10 px-8 py-4 bg-gray-900 text-white font-bold rounded-lg hover:bg-gray-800 transition-colors">
+                            Try Tracker Now
+                        </Link>
                     </div>
                     <div className="bg-blue-50 rounded-3xl p-8 border-4 border-blue-100 shadow-inner">
                         <div className="aspect-square bg-gray-200 rounded-xl relative overflow-hidden flex items-center justify-center border-2 border-dashed border-gray-400">
