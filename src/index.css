@@ -1,0 +1,12 @@
+html {
+  scroll-behavior: smooth;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Reset or global styles can go here */
+body {
+  @apply bg-gray-50 text-gray-900;
+}
