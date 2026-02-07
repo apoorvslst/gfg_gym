@@ -34,6 +34,10 @@ export default function ExerciseCard({ muscleGroup }) {
 
                         {expandedExercise === exercise.name && (
                             <div className="mt-4 space-y-4 animate-fadeIn">
+                                <div className="flex items-center text-sm font-medium text-gray-500 bg-gray-50 p-2 rounded-lg w-fit">
+                                    <span className="mr-2">👥</span>
+                                    Suitable for Ages: <span className="ml-1 text-gray-800">{exercise.ageRange || 'All Ages'}</span>
+                                </div>
                                 <p className="text-gray-600 leading-relaxed">{exercise.description}</p>
 
                                 {/* Demo Video */}

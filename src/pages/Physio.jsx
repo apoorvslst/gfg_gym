@@ -1,16 +1,21 @@
 import React, { useState } from 'react';
+import PoseTracker from '../components/PoseTracker';
 import { physioData } from '../data/physioData';
 import { ArrowLeft, Play, Clock, Target } from 'lucide-react';
 
 export default function Physio() {
     const [selectedMuscle, setSelectedMuscle] = useState(null);
+    const [trackingExercise, setTrackingExercise] = useState(null); // Track which exercise is active
 
     if (selectedMuscle) {
         return (
             <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     <button
-                        onClick={() => setSelectedMuscle(null)}
+                        onClick={() => {
+                            setSelectedMuscle(null);
+                            setTrackingExercise(null);
+                        }}
                         className="flex items-center text-blue-600 hover:text-blue-800 font-semibold mb-8 transition-colors"
                     >
                         <ArrowLeft className="w-5 h-5 mr-2" />
@@ -59,10 +64,51 @@ export default function Physio() {
                                                 <span className="text-gray-900 font-mono text-sm">{exercise.prescription}</span>
                                             </div>
                                         </div>
+
+                                        <div className="flex items-start">
+                                            <div className="w-5 h-5 flex items-center justify-center mt-0.5 flex-shrink-0 text-blue-500">
+                                                👥
+                                            </div>
+                                            <div className="ml-3">
+                                                <span className="text-sm font-semibold text-gray-500 block">Age Range</span>
+                                                <span className="text-gray-900">{exercise.ageRange || 'All Ages'}</span>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div className="bg-gray-50 rounded-xl p-4">
                                         <p className="text-gray-700 text-sm leading-relaxed">{exercise.description}</p>
+                                    </div>
+
+                                    {/* Inline Tracker */}
+                                    <div className="mt-6">
+                                        {trackingExercise !== index ? (
+                                            <button
+                                                onClick={() => setTrackingExercise(index)}
+                                                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold py-3 px-6 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2"
+                                            >
+                                                🎯 Start Tracker
+                                            </button>
+                                        ) : (
+                                            <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                                                <div className="flex justify-between items-center bg-blue-50 p-3 rounded-lg border border-blue-100">
+                                                    <h4 className="font-bold text-blue-900 flex items-center">
+                                                        <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse mr-2"></span>
+                                                        Live Tracker Mode
+                                                    </h4>
+                                                    <button
+                                                        onClick={() => setTrackingExercise(null)}
+                                                        className="text-sm font-semibold text-gray-500 hover:text-gray-700 underline"
+                                                    >
+                                                        Close Tracker
+                                                    </button>
+                                                </div>
+
+                                                <div className="h-[500px] border-2 border-gray-900 rounded-xl overflow-hidden shadow-2xl">
+                                                    <PoseTracker />
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
                             </div>
