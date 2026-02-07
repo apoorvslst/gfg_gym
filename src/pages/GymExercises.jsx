@@ -6,7 +6,6 @@ export default function GymExercises() {
     return (
         <div className="min-h-screen bg-gray-50 py-12 px-4">
             <div className="max-w-7xl mx-auto">
-                {/* Page Header */}
                 <div className="text-center mb-12">
                     <h1 className="text-5xl font-extrabold text-gray-900 mb-4">Gym Exercises</h1>
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -14,7 +13,6 @@ export default function GymExercises() {
                     </p>
                 </div>
 
-                {/* Upper Body Section */}
                 <section className="mb-12">
                     <h2 className="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-blue-600 pl-4">
                         Upper Body: Push & Pull
@@ -27,7 +25,6 @@ export default function GymExercises() {
                     </div>
                 </section>
 
-                {/* Arms & Forearms Section */}
                 <section className="mb-12">
                     <h2 className="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-green-600 pl-4">
                         Arms & Forearms
@@ -39,7 +36,6 @@ export default function GymExercises() {
                     </div>
                 </section>
 
-                {/* Core & Lower Back Section */}
                 <section className="mb-12">
                     <h2 className="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-purple-600 pl-4">
                         Core & Lower Back
@@ -51,7 +47,6 @@ export default function GymExercises() {
                     </div>
                 </section>
 
-                {/* Lower Body Section */}
                 <section className="mb-12">
                     <h2 className="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-orange-600 pl-4">
                         Lower Body
