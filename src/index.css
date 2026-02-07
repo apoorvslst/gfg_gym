@@ -6,6 +6,24 @@ html {
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .animate-fadeIn {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
 /* Custom Reset or global styles can go here */
 body {
   @apply bg-gray-50 text-gray-900;

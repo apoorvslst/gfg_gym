@@ -29,12 +29,17 @@ export default function Navbar() {
                             PHYSIO<span className="text-gray-900">FRIEND</span>
                         </Link>
 
-                        {isHome && (
-                            <div className="hidden md:ml-10 md:flex md:space-x-8">
-                                <a href="#video" className="text-gray-500 hover:text-blue-600 font-medium transition-colors">How it Works</a>
-                                <a href="#posture" className="text-gray-500 hover:text-blue-600 font-medium transition-colors">Analyzer</a>
-                            </div>
-                        )}
+                        <div className="hidden md:ml-10 md:flex md:space-x-8">
+                            {isHome ? (
+                                <>
+                                    <a href="#video" className="text-gray-500 hover:text-blue-600 font-medium transition-colors">How it Works</a>
+                                    <a href="#posture" className="text-gray-500 hover:text-blue-600 font-medium transition-colors">Analyzer</a>
+                                </>
+                            ) : (
+                                <Link to="/" className="text-gray-500 hover:text-blue-600 font-medium transition-colors">Home</Link>
+                            )}
+                            <Link to="/exercises" className="text-gray-500 hover:text-blue-600 font-medium transition-colors">Exercises</Link>
+                        </div>
                     </div>
 
                     <div className="flex items-center space-x-4">

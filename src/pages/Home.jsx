@@ -1,30 +1,49 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import MuscleAnatomy from '../components/MuscleAnatomy';
 
 export default function Home() {
     return (
         <div className="flex flex-col">
-            {/* Hero Section */}
-            <section id="hero" className="min-h-[80vh] flex flex-col items-center justify-center text-center px-4">
-                <h1 className="text-5xl md:text-7xl font-extrabold text-gray-900 leading-tight">
-                    Your Personal <span className="text-blue-600">Physio Friend</span>
-                </h1>
-                <p className="mt-6 max-w-2xl mx-auto text-xl text-gray-600 md:text-2xl">
-                    Recover faster and smarter. AI-powered posture analysis and guided exercises to help you stay at your best.
-                </p>
-                <div className="mt-10 flex flex-col sm:flex-row gap-4">
-                    <Link
-                        to="/signup"
-                        className="px-8 py-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-colors shadow-lg"
-                    >
-                        Start Your Recovery
-                    </Link>
-                    <a
-                        href="#video"
-                        className="px-8 py-4 bg-white text-blue-600 border-2 border-blue-600 font-bold rounded-lg hover:bg-blue-50 transition-colors"
-                    >
-                        Watch Demo
-                    </a>
+            {/* Hero Section - Split Layout */}
+            <section id="hero" className="min-h-screen flex items-center px-4 py-6">
+                <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
+                    {/* Left Half - Text Content */}
+                    <div className="space-y-8">
+                        <div>
+                            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-tight">
+                                <span className="text-blue-600">Physio Friend</span>
+                            </h1>
+                            <p className="mt-6 text-xl md:text-2xl text-gray-600 leading-relaxed">
+                                Your personal AI-powered physiotherapy assistant. Track your progress,
+                                get personalized exercises, and recover faster with real-time posture analysis.
+                            </p>
+                        </div>
+
+                        <div className="flex flex-col sm:flex-row gap-4">
+                            <Link
+                                to="/signup"
+                                className="px-8 py-4 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl text-center text-lg"
+                            >
+                                Start Recovery
+                            </Link>
+                            <a
+                                href="#video"
+                                className="px-8 py-4 bg-white text-blue-600 border-2 border-blue-600 font-bold rounded-lg hover:bg-blue-50 transition-all text-center text-lg"
+                            >
+                                Watch Demo
+                            </a>
+                        </div>
+
+                        <div className="pt-4 text-sm text-gray-500">
+                            <p>💡 <strong>Tip:</strong> Hover over muscles on the right to explore targeted exercises</p>
+                        </div>
+                    </div>
+
+                    {/* Right Half - Interactive Muscle Anatomy */}
+                    <div className="h-[600px] md:h-[700px]">
+                        <MuscleAnatomy />
+                    </div>
                 </div>
             </section>
 
@@ -33,7 +52,6 @@ export default function Home() {
                 <div className="max-w-5xl mx-auto text-center">
                     <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-8">How It Works</h2>
                     <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black flex items-center justify-center">
-                        {/* Placeholder for actual video */}
                         <div className="text-white text-center p-8">
                             <svg className="w-20 h-20 mx-auto mb-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd" />
@@ -41,7 +59,6 @@ export default function Home() {
                             <p className="text-xl font-medium">Instructional Video Demo</p>
                             <p className="text-gray-400 mt-2">See how Physio Friend guides you through your exercises.</p>
                         </div>
-                        {/* In a real scenario, you'd use <video> or an <iframe> here */}
                     </div>
                 </div>
             </section>
@@ -76,7 +93,6 @@ export default function Home() {
                     </div>
                     <div className="bg-blue-50 rounded-3xl p-8 border-4 border-blue-100 shadow-inner">
                         <div className="aspect-square bg-gray-200 rounded-xl relative overflow-hidden flex items-center justify-center border-2 border-dashed border-gray-400">
-                            {/* Dummy UI for Analyzer */}
                             <div className="absolute inset-0 bg-blue-600/10 flex items-center justify-center">
                                 <div className="w-1/2 h-4/5 border-2 border-blue-500 rounded-full flex flex-col items-center justify-around p-4">
                                     <div className="w-12 h-12 bg-blue-500 rounded-full"></div>
