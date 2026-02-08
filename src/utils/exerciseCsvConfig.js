@@ -9,10 +9,28 @@ export const CSV_FILES = {
   'hips-glutes': 'Hips & Glutes.csv',
   'knees-quads': 'knees_quadrants.csv',
   'ankles-calves': 'ankles&calves.csv',
+  gym: 'gym_exercises.csv',
 };
 
 /** Display name (from Physio/Gym) -> { muscleId, csvRowName } */
 export const EXERCISE_TO_CSV_ROW = {
+  // Gym Exercises
+  'Overhead Press': { muscleId: 'gym', csvRowName: 'Overhead Press' },
+  'Barbell Curls': { muscleId: 'gym', csvRowName: 'Barbell Curls' },
+  'Bench Press': { muscleId: 'gym', csvRowName: 'Bench Press' },
+  'Hip Thrusts': { muscleId: 'gym', csvRowName: 'Hip Thrusts' },
+  'Back Squats': { muscleId: 'gym', csvRowName: 'Back Squats' },
+  'Romanian Deadlifts (RDLs)': { muscleId: 'gym', csvRowName: 'Deadlift' },
+  'Lateral Raises': { muscleId: 'gym', csvRowName: 'Lateral Raises' },
+  'Push-ups': { muscleId: 'gym', csvRowName: 'Push-ups' },
+  'Plank': { muscleId: 'gym', csvRowName: 'Plank' },
+  'Hanging Leg Raises': { muscleId: 'gym', csvRowName: 'Hanging Leg Raises' },
+  'Face Pulls': { muscleId: 'gym', csvRowName: 'Face Pulls' },
+  'Bent-over Rows': { muscleId: 'gym', csvRowName: 'Bent-over Rows' },
+  'Pull-ups / Lat Pulldowns': { muscleId: 'gym', csvRowName: 'Pull-ups' },
+  'Dumbbell Shrugs': { muscleId: 'gym', csvRowName: 'Dumbbell Shrugs' },
+  'Wrist Curls': { muscleId: 'gym', csvRowName: 'Wrist Curls' },
+
   // Neck
   'Chin Tucks': { muscleId: 'neck', csvRowName: 'Chin Tuck' },
   'Isometric Side Press': { muscleId: 'neck', csvRowName: 'Isometric Side' },
