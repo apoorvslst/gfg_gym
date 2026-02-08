@@ -40,7 +40,7 @@ export default function Navbar() {
                             <Link to="/physio" className="text-gray-500 hover:text-blue-600 font-medium transition-colors">Physio</Link>
                             <Link to="/exercises" className="text-gray-500 hover:text-blue-600 font-medium transition-colors">Exercises</Link>
                             <Link to="/diet-plan" className="text-gray-500 hover:text-blue-600 font-medium transition-colors">Diet Plan</Link>
-                            <Link to="/tracker" className="text-gray-500 hover:text-blue-600 font-medium transition-colors">Tracker</Link>
+
                         </div>
                     </div>
 
