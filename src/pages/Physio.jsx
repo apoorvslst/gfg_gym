@@ -1,7 +1,24 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { physioData } from '../data/physioData';
+import PageTransition from '../components/PageTransition';
 import { ArrowLeft, Play, Clock, Target } from 'lucide-react';
+
+const container = {
+    hidden: { opacity: 0 },
+    show: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.1
+        }
+    }
+};
+
+const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+};
 
 export default function Physio() {
     const navigate = useNavigate();
@@ -9,12 +26,11 @@ export default function Physio() {
 
     if (selectedMuscle) {
         return (
-            <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+            <PageTransition className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
                 <div className="max-w-7xl mx-auto">
                     <button
                         onClick={() => {
                             setSelectedMuscle(null);
-                            setTrackingExercise(null);
                         }}
                         className="flex items-center text-blue-600 hover:text-blue-800 font-semibold mb-8 transition-colors"
                     >
@@ -23,13 +39,35 @@ export default function Physio() {
                     </button>
 
                     <div className="mb-10 text-center">
-                        <h1 className="text-4xl font-black text-gray-900 mb-4">{selectedMuscle.name}</h1>
-                        <p className="text-xl text-gray-600 max-w-2xl mx-auto">{selectedMuscle.focus}</p>
+                        <motion.h1
+                            initial={{ opacity: 0, y: -20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            className="text-4xl font-black text-gray-900 mb-4"
+                        >
+                            {selectedMuscle.name}
+                        </motion.h1>
+                        <motion.p
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.2 }}
+                            className="text-xl text-gray-600 max-w-2xl mx-auto"
+                        >
+                            {selectedMuscle.focus}
+                        </motion.p>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <motion.div
+                        variants={container}
+                        initial="hidden"
+                        animate="show"
+                        className="grid grid-cols-1 md:grid-cols-2 gap-8"
+                    >
                         {selectedMuscle.exercises.map((exercise, index) => (
-                            <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-shadow duration-300">
+                            <motion.div
+                                key={index}
+                                variants={item}
+                                className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-shadow duration-300"
+                            >
                                 <div className="relative aspect-video bg-gray-900">
                                     <iframe
                                         src={`${exercise.videoUrl}?modestbranding=1&rel=0&showinfo=0&controls=1`}
@@ -91,32 +129,49 @@ export default function Physio() {
                                         </button>
                                     </div>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
-                    </div>
+                    </motion.div>
                 </div>
-            </div>
+            </PageTransition>
         );
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+        <PageTransition className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
                 <div className="text-center mb-16">
-                    <h1 className="text-4xl md:text-5xl font-black text-gray-900 mb-6 tracking-tight">
+                    <motion.h1
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="text-4xl md:text-5xl font-black text-gray-900 mb-6 tracking-tight"
+                    >
                         Physiotherapy <span className="text-blue-600">Library</span>
-                    </h1>
-                    <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                    </motion.h1>
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.2 }}
+                        className="text-xl text-gray-600 max-w-2xl mx-auto"
+                    >
                         Select a muscle group to view prescribed rehabilitation exercises, demonstrations, and guidelines.
-                    </p>
+                    </motion.p>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <motion.div
+                    variants={container}
+                    initial="hidden"
+                    animate="show"
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
                     {physioData.map((muscle) => (
-                        <button
+                        <motion.button
                             key={muscle.id}
+                            variants={item}
+                            whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+                            whileTap={{ scale: 0.98 }}
                             onClick={() => setSelectedMuscle(muscle)}
-                            className="group relative bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden text-left border border-gray-100 hover:-translate-y-1 h-80 w-full"
+                            className="group relative bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden text-left border border-gray-100 h-80 w-full"
                         >
                             <div className="absolute inset-0">
                                 <img
@@ -135,10 +190,10 @@ export default function Physio() {
                                     <ArrowLeft className="w-4 h-4 ml-2 rotate-180 transition-transform group-hover:translate-x-1" />
                                 </div>
                             </div>
-                        </button>
+                        </motion.button>
                     ))}
-                </div>
+                </motion.div>
             </div>
-        </div>
+        </PageTransition>
     );
 }

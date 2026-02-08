@@ -1,15 +1,22 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import PageTransition from '../components/PageTransition';
 
 export default function Home() {
     return (
-        <div className="flex flex-col">
+        <PageTransition className="flex flex-col">
             {/* Hero Section - Split Layout */}
             <section id="hero" className="min-h-screen flex items-center px-4 py-12 bg-gradient-to-br from-blue-50 to-white overflow-hidden">
                 <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-16 items-center">
                     {/* Left Half - Content */}
-                    <div className="space-y-8 text-left z-10" data-aos="fade-right">
+                    <motion.div
+                        initial={{ opacity: 0, x: -50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="space-y-8 text-left z-10"
+                    >
                         <div>
                             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-gray-900 leading-[1.1] tracking-tight">
                                 Recover Stronger with <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">Physio Friend</span>
@@ -45,10 +52,15 @@ export default function Home() {
                                 Personalized Plans
                             </div>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Right Half - Hero Image */}
-                    <div className="relative lg:h-[600px] flex items-center justify-center p-4">
+                    <motion.div
+                        initial={{ opacity: 0, x: 50 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="relative lg:h-[600px] flex items-center justify-center p-4"
+                    >
                         <div className="relative z-10 w-full max-w-md lg:max-w-full">
                             <img
                                 src="/hero-image.jpg"
@@ -58,13 +70,19 @@ export default function Home() {
                         </div>
                         {/* Decorative Background Elements */}
                         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-blue-100/50 rounded-full blur-3xl -z-10 opacity-60"></div>
-                    </div>
+                    </motion.div>
                 </div>
             </section>
 
             {/* Video Section */}
             <section id="video" className="py-24 bg-gray-100 px-4">
-                <div className="max-w-5xl mx-auto text-center">
+                <motion.div
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="max-w-5xl mx-auto text-center"
+                >
                     <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-8">How It Works</h2>
                     <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black flex items-center justify-center">
                         <div className="text-white text-center p-8">
@@ -75,21 +93,27 @@ export default function Home() {
                             <p className="text-gray-400 mt-2">See how Physio Friend guides you through your exercises.</p>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </section>
-
 
 
             {/* Footer / CTA Section */}
             <section className="py-20 bg-blue-600 text-white text-center px-4">
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to improve your mobility?</h2>
-                <Link
-                    to="/signup"
-                    className="inline-block px-10 py-5 bg-white text-blue-600 font-bold rounded-xl text-xl hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl"
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
                 >
-                    Join Physio Friend Today
-                </Link>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to improve your mobility?</h2>
+                    <Link
+                        to="/signup"
+                        className="inline-block px-10 py-5 bg-white text-blue-600 font-bold rounded-xl text-xl hover:bg-gray-100 transition-all transform hover:scale-105 shadow-2xl"
+                    >
+                        Join Physio Friend Today
+                    </Link>
+                </motion.div>
             </section>
-        </div>
+        </PageTransition>
     );
 }

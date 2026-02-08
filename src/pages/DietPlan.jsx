@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import PageTransition from '../components/PageTransition';
 import { Activity, Calculator, Apple, Egg, Fish, Microscope, Flame, Bone, ShieldAlert } from 'lucide-react';
 
 export default function DietPlan() {
@@ -225,16 +227,25 @@ export default function DietPlan() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-50 pt-24 pb-20 px-4 sm:px-6 lg:px-8">
+        <PageTransition className="min-h-screen bg-gray-50 pt-24 pb-20 px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-12">
-                    <h1 className="text-4xl font-black text-gray-900 mb-4 tracking-tight">
+                    <motion.h1
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="text-4xl font-black text-gray-900 mb-4 tracking-tight"
+                    >
                         Recovery Diet <span className="text-blue-600">Planner</span>
-                    </h1>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                    </motion.h1>
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 0.2 }}
+                        className="text-lg text-gray-600 max-w-2xl mx-auto"
+                    >
                         Generate a specialized nutrition plan tailored to your body's recovery needs.
                         Optimized for injury healing and tissue repair.
-                    </p>
+                    </motion.p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -371,7 +382,11 @@ export default function DietPlan() {
                             </div>
 
                             {formData.injury === 'yes' && (
-                                <div className="animate-in fade-in slide-in-from-top-2 duration-300">
+                                <motion.div
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: 'auto' }}
+                                    exit={{ opacity: 0, height: 0 }}
+                                >
                                     <label className="block text-sm font-medium text-gray-700 mb-1">Injury Type</label>
                                     <div className="grid grid-cols-2 gap-2">
                                         <button
@@ -397,15 +412,17 @@ export default function DietPlan() {
                                             Strain
                                         </button>
                                     </div>
-                                </div>
+                                </motion.div>
                             )}
 
-                            <button
+                            <motion.button
+                                whileHover={{ scale: 1.02 }}
+                                whileTap={{ scale: 0.98 }}
                                 type="submit"
                                 className="w-full bg-gray-900 hover:bg-black text-white font-bold py-3 px-6 rounded-xl transition-all shadow-lg active:scale-95 mt-4"
                             >
                                 Generate Plan
-                            </button>
+                            </motion.button>
                         </form>
                     </div>
 
@@ -420,7 +437,12 @@ export default function DietPlan() {
                                 <p className="text-gray-500">Enter your details and injury status to get a personalized recovery nutrition chart.</p>
                             </div>
                         ) : (
-                            <div className="animate-in fade-in slide-in-from-bottom-4 duration-500 space-y-6">
+                            <motion.div
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5 }}
+                                className="space-y-6"
+                            >
 
                                 {/* Macros Cards */}
                                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -539,11 +561,11 @@ export default function DietPlan() {
                                     </div>
                                 </div>
 
-                            </div>
+                            </motion.div>
                         )}
                     </div>
                 </div>
             </div>
-        </div>
+        </PageTransition>
     );
 }
