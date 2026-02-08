@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
-import PoseTracker from './PoseTracker';
+import { useNavigate } from 'react-router-dom';
 
 export default function ExerciseCard({ muscleGroup }) {
     const [expandedExercise, setExpandedExercise] = useState(null);
-    const [isTracking, setIsTracking] = useState(false); // New state to toggle tracker
+    const navigate = useNavigate();
 
     const toggleExpand = (exerciseName) => {
-        if (expandedExercise === exerciseName) {
-            setExpandedExercise(null);
-            setIsTracking(false); // Reset tracking when collapsing
-        } else {
-            setExpandedExercise(exerciseName);
-            setIsTracking(false); // Reset tracking when switching exercise
-        }
+        setExpandedExercise(expandedExercise === exerciseName ? null : exerciseName);
+    };
+
+    const handleAnalyzeClick = (exerciseName) => {
+        navigate(`/pose-estimation/${encodeURIComponent(exerciseName)}`);
     };
 
     return (
@@ -34,10 +32,6 @@ export default function ExerciseCard({ muscleGroup }) {
 
                         {expandedExercise === exercise.name && (
                             <div className="mt-4 space-y-4 animate-fadeIn">
-                                <div className="flex items-center text-sm font-medium text-gray-500 bg-gray-50 p-2 rounded-lg w-fit">
-                                    <span className="mr-2">👥</span>
-                                    Suitable for Ages: <span className="ml-1 text-gray-800">{exercise.ageRange || 'All Ages'}</span>
-                                </div>
                                 <p className="text-gray-600 leading-relaxed">{exercise.description}</p>
 
                                 {/* Demo Video */}
@@ -54,37 +48,13 @@ export default function ExerciseCard({ muscleGroup }) {
                                     ></iframe>
                                 </div>
 
-                                {/* Conditional Rendering based on isTracking */}
-                                {!isTracking ? (
-                                    <>
-                                        {/* Tracker Button */}
-                                        <button
-                                            onClick={() => setIsTracking(true)}
-                                            className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold py-3 px-6 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-md hover:shadow-lg"
-                                        >
-                                            🎯 Start Tracker
-                                        </button>
-                                    </>
-                                ) : (
-                                    <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                                        <div className="flex justify-between items-center bg-blue-50 p-3 rounded-lg border border-blue-100">
-                                            <h4 className="font-bold text-blue-900 flex items-center">
-                                                <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse mr-2"></span>
-                                                Live Tracker Mode
-                                            </h4>
-                                            <button
-                                                onClick={() => setIsTracking(false)}
-                                                className="text-sm font-semibold text-gray-500 hover:text-gray-700 underline"
-                                            >
-                                                Close Tracker
-                                            </button>
-                                        </div>
-
-                                        <div className="h-[500px] border-2 border-gray-900 rounded-xl overflow-hidden shadow-2xl">
-                                            <PoseTracker />
-                                        </div>
-                                    </div>
-                                )}
+                                {/* Analyze Button */}
+                                <button
+                                    onClick={() => handleAnalyzeClick(exercise.name)}
+                                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold py-3 px-6 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-md hover:shadow-lg"
+                                >
+                                    🎯 Analyze My Form
+                                </button>
                             </div>
                         )}
                     </div>

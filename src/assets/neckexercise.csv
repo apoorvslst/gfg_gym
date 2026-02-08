@@ -1,0 +1,10 @@
+Exercise Name,Primary Vertex,Landmark A,Landmark C,Start Angle Range,End Angle Range,Error Condition
+Chin Tuck,Mid-Shoulder,Nose (0),Hip (23/24),175∘−180∘,160∘−170∘,Flexion >155∘
+Isometric Front,Mid-Shoulder,Nose (0),Hip (23/24),175∘−180∘,Hold for 10s,Tilt >5∘
+Isometric Side,Mid-Shoulder,Ear (7/8),Hip (23/24),175∘−180∘,Hold for 10s,Side bend >5∘
+Neck Rotation,Mid-Shoulder,Nose (0),Shoulder (11/12),85∘−95∘,10∘−30∘,Trunk rotation >10∘
+Trap Stretch,Mid-Shoulder,Ear (7/8),Shoulder (11/12),175∘−180∘,135∘−145∘,Shoulder elevation
+Levator Stretch,Mid-Shoulder,Ear (7/8),Shoulder (11/12),175∘−180∘,140∘ (flex+rot),Shrugging
+Prone Neck Ext.,Mid-Shoulder,Nose (0),Hip (23/24),180∘ (Prone),160∘−170∘,Chin poking up
+T-Spine Opener,Shoulder (11/12),Elbow (13/14),Hip (23/24),175∘−180∘,120∘−140∘,Pelvic rotation
+Corner Chest,Shoulder (11/12),Sternum,Wrist (15/16),85∘−95∘,Lean forward,Arm angle change

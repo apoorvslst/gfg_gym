@@ -17,7 +17,7 @@ export default function Login() {
             setError('');
             setLoading(true);
             await login(emailRef.current.value, passwordRef.current.value);
-            navigate('/exercises');
+            navigate('/');
         } catch (error) {
             console.error(error);
             setError('Failed to log in: ' + error.message);

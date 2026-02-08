@@ -1,43 +1,21 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import PageTransition from '../components/PageTransition';
 import ExerciseCard from '../components/ExerciseCard';
 import { exercisesData } from '../data/exercisesData';
 
-const sectionVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-};
-
 export default function GymExercises() {
     return (
-        <PageTransition className="min-h-screen bg-gray-50 py-12 px-4">
+        <div className="min-h-screen bg-gray-50 py-12 px-4">
             <div className="max-w-7xl mx-auto">
+                {/* Page Header */}
                 <div className="text-center mb-12">
-                    <motion.h1
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        className="text-5xl font-extrabold text-gray-900 mb-4"
-                    >
-                        Gym Exercises
-                    </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-xl text-gray-600 max-w-3xl mx-auto"
-                    >
+                    <h1 className="text-5xl font-extrabold text-gray-900 mb-4">Gym Exercises</h1>
+                    <p className="text-xl text-gray-600 max-w-3xl mx-auto">
                         Comprehensive exercise library organized by muscle groups. Click "View Details" to see descriptions, demo videos, and analyze your form.
-                    </motion.p>
+                    </p>
                 </div>
 
-                <motion.section
-                    variants={sectionVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    className="mb-12"
-                >
+                {/* Upper Body Section */}
+                <section className="mb-12">
                     <h2 className="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-blue-600 pl-4">
                         Upper Body: Push & Pull
                     </h2>
@@ -47,15 +25,10 @@ export default function GymExercises() {
                         <ExerciseCard muscleGroup={exercisesData.upperBody.lats} />
                         <ExerciseCard muscleGroup={exercisesData.upperBody.traps} />
                     </div>
-                </motion.section>
+                </section>
 
-                <motion.section
-                    variants={sectionVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    className="mb-12"
-                >
+                {/* Arms & Forearms Section */}
+                <section className="mb-12">
                     <h2 className="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-green-600 pl-4">
                         Arms & Forearms
                     </h2>
@@ -64,15 +37,10 @@ export default function GymExercises() {
                         <ExerciseCard muscleGroup={exercisesData.arms.triceps} />
                         <ExerciseCard muscleGroup={exercisesData.arms.forearms} />
                     </div>
-                </motion.section>
+                </section>
 
-                <motion.section
-                    variants={sectionVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    className="mb-12"
-                >
+                {/* Core & Lower Back Section */}
+                <section className="mb-12">
                     <h2 className="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-purple-600 pl-4">
                         Core & Lower Back
                     </h2>
@@ -81,15 +49,10 @@ export default function GymExercises() {
                         <ExerciseCard muscleGroup={exercisesData.core.obliques} />
                         <ExerciseCard muscleGroup={exercisesData.core.lowerBack} />
                     </div>
-                </motion.section>
+                </section>
 
-                <motion.section
-                    variants={sectionVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    className="mb-12"
-                >
+                {/* Lower Body Section */}
+                <section className="mb-12">
                     <h2 className="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-orange-600 pl-4">
                         Lower Body
                     </h2>
@@ -99,8 +62,8 @@ export default function GymExercises() {
                         <ExerciseCard muscleGroup={exercisesData.lowerBody.hamstrings} />
                         <ExerciseCard muscleGroup={exercisesData.lowerBody.calves} />
                     </div>
-                </motion.section>
+                </section>
             </div>
-        </PageTransition>
+        </div>
     );
 }

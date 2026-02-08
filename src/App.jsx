@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import Layout from './components/Layout';
@@ -5,12 +6,11 @@ import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import GymExercises from './pages/GymExercises';
-
 import Physio from './pages/Physio';
 import DietPlan from './pages/DietPlan';
+import PoseTracker from './components/PoseTracker';
 
-
-import PoseEstimation from './pages/PoseEstimation';
+const PoseEstimation = lazy(() => import('./pages/PoseEstimation.jsx'));
 
 function App() {
   return (
@@ -24,8 +24,15 @@ function App() {
             <Route path="exercises" element={<GymExercises />} />
             <Route path="physio" element={<Physio />} />
             <Route path="diet-plan" element={<DietPlan />} />
-
-            <Route path="pose-estimation/:exerciseName" element={<PoseEstimation />} />
+            <Route path="tracker" element={<PoseTracker />} />
+            <Route
+              path="pose-estimation/:exerciseName"
+              element={
+                <Suspense fallback={<div className="min-h-screen bg-gray-900 flex items-center justify-center text-white">Loading...</div>}>
+                  <PoseEstimation />
+                </Suspense>
+              }
+            />
           </Route>
         </Routes>
       </Router>

@@ -1,77 +1,91 @@
-
-export const EXERCISE_CSV_MAP = {
-    // Neck
-    "Chin Tucks": "/csv-data/neck.csv",
-    "Isometric Side Press": "/csv-data/neck.csv",
-    "Upper Trap Stretch": "/csv-data/neck.csv",
-    "Neck Rotations": "/csv-data/neck.csv",
-    "Levator Scapulae Stretch": "/csv-data/neck.csv",
-    "Prone Neck Extension": "/csv-data/neck.csv",
-    "T-Spine Openers": "/csv-data/neck.csv",
-    "Corner Chest Stretch": "/csv-data/neck.csv",
-    "Isometric Front": "/csv-data/neck.csv", // Added based on CSV content
-
-    // Shoulders
-    "Banded External Rotation": "/csv-data/shoulders.csv",
-    "Banded Internal Rotation": "/csv-data/shoulders.csv",
-    "Serratus Punches": "/csv-data/shoulders.csv",
-    "Empty Can (Scaption)": "/csv-data/shoulders.csv",
-    "Wall Slides": "/csv-data/shoulders.csv",
-    "Pendulums": "/csv-data/shoulders.csv",
-    "Face Pulls": "/csv-data/shoulders.csv",
-    "Sleeper Stretch": "/csv-data/shoulders.csv",
-    "Prone Y-Lifts": "/csv-data/shoulders.csv",
-    "Wall Lift-Offs": "/csv-data/shoulders.csv",
-
-    // Core & Back
-    "Bird-Dog": "/csv-data/core-back.csv",
-    "Dead Bug": "/csv-data/core-back.csv",
-    "Pelvic Tilts": "/csv-data/core-back.csv",
-    "Cat-Cow": "/csv-data/core-back.csv",
-    "Side Plank": "/csv-data/core-back.csv",
-    "Glute Bridges": "/csv-data/core-back.csv",
-    "Superman Extensions": "/csv-data/core-back.csv",
-    "Pallof Press": "/csv-data/core-back.csv",
-    "Knee-to-Chest Stretch": "/csv-data/core-back.csv",
-    "Prone Cobra": "/csv-data/core-back.csv",
-
-    // Hips & Glutes
-    "Clamshells": "/csv-data/hips-glutes.csv",
-    "Lateral Band Walks": "/csv-data/hips-glutes.csv",
-    "Monster Walks": "/csv-data/hips-glutes.csv",
-    "Donkey Kicks": "/csv-data/hips-glutes.csv",
-    "Fire Hydrants": "/csv-data/hips-glutes.csv",
-    "Pigeon Stretch": "/csv-data/hips-glutes.csv",
-    "Hip Flexor Stretch": "/csv-data/hips-glutes.csv",
-    "Single-Leg Bridge": "/csv-data/hips-glutes.csv",
-    "Adductor Squeezes": "/csv-data/hips-glutes.csv",
-    "Figure-Four Stretch": "/csv-data/hips-glutes.csv",
-
-    // Knees & Quads
-    "Quad Sets": "/csv-data/knees-quads.csv",
-    "Terminal Knee Extension (TKE)": "/csv-data/knees-quads.csv",
-    "Straight Leg Raises": "/csv-data/knees-quads.csv",
-    "Wall Sits": "/csv-data/knees-quads.csv",
-    "Step-Ups": "/csv-data/knees-quads.csv",
-    "Heel Slides": "/csv-data/knees-quads.csv",
-    "Eccentric Squats": "/csv-data/knees-quads.csv",
-    "Hamstring Curls": "/csv-data/knees-quads.csv",
-    "VMO Arcs (Short Arc Quad)": "/csv-data/knees-quads.csv",
-    "Long Arc Quads": "/csv-data/knees-quads.csv",
-
-    // Ankles & Calves
-    "Standing Calf Raises": "/csv-data/ankles-calves.csv",
-    "Seated Calf Raises": "/csv-data/ankles-calves.csv",
-    "Ankle Pumps": "/csv-data/ankles-calves.csv",
-    "Ankle Alphabets": "/csv-data/ankles-calves.csv",
-    "Towel Curls": "/csv-data/ankles-calves.csv",
-    "Banded Eversion": "/csv-data/ankles-calves.csv",
-    "Banded Inversion": "/csv-data/ankles-calves.csv",
-    "Tibialis Raises": "/csv-data/ankles-calves.csv",
-    "Single-Leg Balance": "/csv-data/ankles-calves.csv",
-    "Tandem Stance": "/csv-data/ankles-calves.csv"
+/**
+ * Maps physio exercise display names to CSV filename and CSV row name.
+ * CSV files live in public/ and are fetched at runtime.
+ */
+export const CSV_FILES = {
+  neck: 'neckexercise.csv',
+  shoulders: 'shoulder-_-rotated-cuff.csv',
+  'core-back': 'core and lower back.csv',
+  'hips-glutes': 'Hips & Glutes.csv',
+  'knees-quads': 'knees_quadrants.csv',
+  'ankles-calves': 'ankles&calves.csv',
 };
 
-export const getCsvPathForExercise = (exerciseName) => {
-    return EXERCISE_CSV_MAP[exerciseName] || null;
+/** Display name (from Physio/Gym) -> { muscleId, csvRowName } */
+export const EXERCISE_TO_CSV_ROW = {
+  // Neck
+  'Chin Tucks': { muscleId: 'neck', csvRowName: 'Chin Tuck' },
+  'Isometric Side Press': { muscleId: 'neck', csvRowName: 'Isometric Side' },
+  'Upper Trap Stretch': { muscleId: 'neck', csvRowName: 'Trap Stretch' },
+  'Levator Scapulae Stretch': { muscleId: 'neck', csvRowName: 'Levator Stretch' },
+  'Neck Rotations': { muscleId: 'neck', csvRowName: 'Neck Rotation' },
+  'Prone Neck Extension': { muscleId: 'neck', csvRowName: 'Prone Neck Ext.' },
+  'T-Spine Openers': { muscleId: 'neck', csvRowName: 'T-Spine Opener' },
+  'Corner Chest Stretch': { muscleId: 'neck', csvRowName: 'Corner Chest' },
+  // Shoulders
+  'Banded External Rotation': { muscleId: 'shoulders', csvRowName: 'Banded Ext. Rot.' },
+  'Banded Internal Rotation': { muscleId: 'shoulders', csvRowName: 'Banded Int. Rot.' },
+  'Serratus Punches': { muscleId: 'shoulders', csvRowName: 'Serratus Punch' },
+  'Empty Can (Scaption)': { muscleId: 'shoulders', csvRowName: 'Empty Can' },
+  'Wall Slides': { muscleId: 'shoulders', csvRowName: 'Wall Slides' },
+  'Pendulums': { muscleId: 'shoulders', csvRowName: 'Pendulums' },
+  'Face Pulls': { muscleId: 'shoulders', csvRowName: 'Face Pulls' },
+  'Sleeper Stretch': { muscleId: 'shoulders', csvRowName: 'Sleeper Stretch' },
+  'Prone Y-Lifts': { muscleId: 'shoulders', csvRowName: 'Prone Y-Lift' },
+  'Wall Lift-Offs': { muscleId: 'shoulders', csvRowName: 'Wall Lift-Off' },
+  // Core & Lower Back
+  'Bird-Dog': { muscleId: 'core-back', csvRowName: 'Bird-Dog' },
+  'Dead Bug': { muscleId: 'core-back', csvRowName: 'Dead Bug' },
+  'Pelvic Tilts': { muscleId: 'core-back', csvRowName: 'Pelvic Tilt' },
+  'Cat-Cow': { muscleId: 'core-back', csvRowName: 'Cat-Cow' },
+  'Side Plank': { muscleId: 'core-back', csvRowName: 'Side Plank' },
+  'Glute Bridges': { muscleId: 'core-back', csvRowName: 'Glute Bridge' },
+  'Superman Extensions': { muscleId: 'core-back', csvRowName: 'Superman' },
+  'Pallof Press': { muscleId: 'core-back', csvRowName: 'Pallof Press' },
+  'Knee-to-Chest Stretch': { muscleId: 'core-back', csvRowName: 'Knee-to-Chest' },
+  'Prone Cobra': { muscleId: 'core-back', csvRowName: 'Prone Cobra' },
+  // Hips & Glutes
+  'Clamshells': { muscleId: 'hips-glutes', csvRowName: 'Clamshells' },
+  'Lateral Band Walks': { muscleId: 'hips-glutes', csvRowName: 'Lateral Walks' },
+  'Monster Walks': { muscleId: 'hips-glutes', csvRowName: 'Monster Walks' },
+  'Donkey Kicks': { muscleId: 'hips-glutes', csvRowName: 'Donkey Kicks' },
+  'Fire Hydrants': { muscleId: 'hips-glutes', csvRowName: 'Fire Hydrants' },
+  'Pigeon Stretch': { muscleId: 'hips-glutes', csvRowName: 'Pigeon Stretch' },
+  'Hip Flexor Stretch': { muscleId: 'hips-glutes', csvRowName: 'Hip Flexor Str.' },
+  'Single-Leg Bridge': { muscleId: 'hips-glutes', csvRowName: 'Single-Leg Br.' },
+  'Adductor Squeezes': { muscleId: 'hips-glutes', csvRowName: 'Adductor Squeeze' },
+  'Figure-Four Stretch': { muscleId: 'hips-glutes', csvRowName: 'Figure-Four' },
+  // Knees & Quads
+  'Quad Sets': { muscleId: 'knees-quads', csvRowName: 'Quad Set' },
+  'Terminal Knee Extension (TKE)': { muscleId: 'knees-quads', csvRowName: 'TKE' },
+  'Straight Leg Raises': { muscleId: 'knees-quads', csvRowName: 'SLR' },
+  'Wall Sits': { muscleId: 'knees-quads', csvRowName: 'Wall Sit' },
+  'Step-Ups': { muscleId: 'knees-quads', csvRowName: 'Step-Up' },
+  'Heel Slides': { muscleId: 'knees-quads', csvRowName: 'Heel Slide' },
+  'Eccentric Squats': { muscleId: 'knees-quads', csvRowName: 'Eccentric Squat' },
+  'Hamstring Curls': { muscleId: 'knees-quads', csvRowName: 'Hamstring Curl' },
+  'VMO Arcs (Short Arc Quad)': { muscleId: 'knees-quads', csvRowName: 'VMO Arc' },
+  'Long Arc Quads': { muscleId: 'knees-quads', csvRowName: 'Long Arc Quad' },
+  // Ankles & Calves
+  'Standing Calf Raises': { muscleId: 'ankles-calves', csvRowName: 'Standing Calf R.' },
+  'Seated Calf Raises': { muscleId: 'ankles-calves', csvRowName: 'Seated Calf R.' },
+  'Ankle Pumps': { muscleId: 'ankles-calves', csvRowName: 'Ankle Pump' },
+  'Ankle Alphabets': { muscleId: 'ankles-calves', csvRowName: 'Ankle Alphabet' },
+  'Towel Curls': { muscleId: 'ankles-calves', csvRowName: 'Towel Curl' },
+  'Banded Eversion': { muscleId: 'ankles-calves', csvRowName: 'Banded Eversion' },
+  'Banded Inversion': { muscleId: 'ankles-calves', csvRowName: 'Banded Inversion' },
+  'Tibialis Raises': { muscleId: 'ankles-calves', csvRowName: 'Tibialis Raise' },
+  'Single-Leg Balance': { muscleId: 'ankles-calves', csvRowName: 'Single-Leg Bal.' },
+  'Tandem Stance': { muscleId: 'ankles-calves', csvRowName: 'Tandem Stance' },
 };
+
+export function getCsvPathForExercise(exerciseDisplayName) {
+  const mapping = EXERCISE_TO_CSV_ROW[exerciseDisplayName];
+  if (!mapping) return null;
+  const filename = CSV_FILES[mapping.muscleId];
+  return filename ? `/${filename}` : null;
+}
+
+export function getCsvRowNameForExercise(exerciseDisplayName) {
+  return EXERCISE_TO_CSV_ROW[exerciseDisplayName]?.csvRowName ?? null;
+}
