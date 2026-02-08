@@ -1,0 +1,11 @@
+Exercise Name,Primary Vertex,Landmark A,Landmark C,Start Angle Range,End Angle Range,Error Condition
+Clamshells,Hip (23/24),Heel (29/30),Knee (25/26),0 (Closed),35-45,Pelvic rotation
+Lateral Band Walks,Knee (25/26),Hip (23/24),Ankle (27/28),160-175,Step laterally,Knee valgus
+Monster Walks,Knee (25/26),Hip (23/24),Ankle (27/28),160-175,Step forward,Knees cave in
+Donkey Kicks,Hip (23/24),Shoulder (11/12),Knee (25/26),85-95,175-180,Lumbar arching
+Fire Hydrants,Hip (23/24),Mid-Shoulder,Knee (25/26),85-95,135-150,Torso twist
+Pigeon Stretch,Hip (23/24),Shoulder (11/12),Knee (25/26),Seated/Prone,Hold for 30s,Knee pain threshold
+Hip Flexor Stretch,Hip (23/24),Shoulder (11/12),Knee (25/26),175-180,185-200,Back arching
+Single-Leg Bridge,Hip (23/24),Shoulder (11/12),Knee (25/26),140-150,175-185,Hip drop (L/R)
+Adductor Squeezes,Knee (25/26),Hip (23/24),Ankle (27/28),85-95,Squeeze inward,Hips lifting
+Figure-Four Stretch,Hip (23/24),Shoulder (11/12),Knee (25/26),85-95,Hold for 30s,Shoulder lift

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import PoseTracker from '../components/PoseTracker';
+import { useNavigate } from 'react-router-dom';
 import { physioData } from '../data/physioData';
 import { ArrowLeft, Play, Clock, Target } from 'lucide-react';
 
 export default function Physio() {
+    const navigate = useNavigate();
     const [selectedMuscle, setSelectedMuscle] = useState(null);
-    const [trackingExercise, setTrackingExercise] = useState(null); // Track which exercise is active
 
     if (selectedMuscle) {
         return (
@@ -81,34 +81,14 @@ export default function Physio() {
                                     </div>
 
                                     {/* Inline Tracker */}
+                                    {/* Tracker Button */}
                                     <div className="mt-6">
-                                        {trackingExercise !== index ? (
-                                            <button
-                                                onClick={() => setTrackingExercise(index)}
-                                                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold py-3 px-6 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2"
-                                            >
-                                                🎯 Start Tracker
-                                            </button>
-                                        ) : (
-                                            <div className="space-y-4 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                                                <div className="flex justify-between items-center bg-blue-50 p-3 rounded-lg border border-blue-100">
-                                                    <h4 className="font-bold text-blue-900 flex items-center">
-                                                        <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse mr-2"></span>
-                                                        Live Tracker Mode
-                                                    </h4>
-                                                    <button
-                                                        onClick={() => setTrackingExercise(null)}
-                                                        className="text-sm font-semibold text-gray-500 hover:text-gray-700 underline"
-                                                    >
-                                                        Close Tracker
-                                                    </button>
-                                                </div>
-
-                                                <div className="h-[500px] border-2 border-gray-900 rounded-xl overflow-hidden shadow-2xl">
-                                                    <PoseTracker />
-                                                </div>
-                                            </div>
-                                        )}
+                                        <button
+                                            onClick={() => navigate(`/pose-estimation/${encodeURIComponent(exercise.name)}`, { state: { mode: 'physio' } })}
+                                            className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-bold py-3 px-6 rounded-lg hover:from-blue-700 hover:to-blue-800 transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2"
+                                        >
+                                            🎯 Start Advanced Tracker
+                                        </button>
                                     </div>
                                 </div>
                             </div>

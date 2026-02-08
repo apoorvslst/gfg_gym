@@ -10,6 +10,7 @@ import Physio from './pages/Physio';
 import DietPlan from './pages/DietPlan';
 
 import PoseTracker from './components/PoseTracker';
+import PoseEstimation from './pages/PoseEstimation';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="physio" element={<Physio />} />
             <Route path="diet-plan" element={<DietPlan />} />
             <Route path="tracker" element={<PoseTracker />} />
+            <Route path="pose-estimation/:exerciseName" element={<PoseEstimation />} />
           </Route>
         </Routes>
       </Router>

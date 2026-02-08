@@ -1,0 +1,11 @@
+Exercise Name,Primary Vertex,Landmark A,Landmark C,Start Angle Range,End Angle Range,Error Condition
+Quad Sets,Knee (25/26),Hip (23/24),Ankle (27/28),170-175,178-180,Heel leaves floor
+Terminal Knee Extension (TKE),Knee (25/26),Hip (23/24),Ankle (27/28),150-160,178-180,Hip hike
+Straight Leg Raises,Hip (23/24),Shoulder (11/12),Ankle (27/28),175-180,145-155,Knee flex >5
+Wall Sits,Knee (25/26),Hip (23/24),Ankle (27/28),170-180,90-100,Knee past toes
+Step-Ups,Knee (25/26),Hip (23/24),Ankle (27/28),85-95,175-180,Knee valgus
+Heel Slides,Knee (25/26),Hip (23/24),Ankle (27/28),175-180,45-60,Hip rotation
+Eccentric Squats,Knee (25/26),Hip (23/24),Ankle (27/28),175-180,90-100,Descent <3s
+Hamstring Curls,Knee (25/26),Hip (23/24),Ankle (27/28),175-180,60-80,Hip lifting
+VMO Arcs (Short Arc Quad),Knee (25/26),Hip (23/24),Ankle (27/28),140-150,175-180,Fast drop
+Long Arc Quads,Knee (25/26),Hip (23/24),Ankle (27/28),85-95,175-180,Trunk leaning
