@@ -4,6 +4,7 @@
  */
 
 import { getCsvPathForExercise, getCsvRowNameForExercise } from './exerciseCsvConfig';
+import { HARDCODED_ANGLE_RULES } from '../data/angleRulesData';
 
 // MediaPipe Pose landmark indices (33 total)
 const LANDMARK_NAMES = {
@@ -185,38 +186,50 @@ export async function fetchExerciseCsv(csvPath) {
 
 /** Get angle rule for current exercise: { vertex, landmarkA, landmarkC, startRange, endRange, errorCondition } */
 export async function getAngleRuleForExercise(exerciseDisplayName) {
+  // 1. Check hardcoded rules first (instant, no network)
+  const hardcoded = HARDCODED_ANGLE_RULES[exerciseDisplayName];
+  if (hardcoded) {
+    return hardcoded;
+  }
+
+  // 2. Fall back to CSV fetch
   const csvPath = getCsvPathForExercise(exerciseDisplayName);
   const csvRowName = getCsvRowNameForExercise(exerciseDisplayName);
   if (!csvPath || !csvRowName) return null;
 
-  const rows = await fetchExerciseCsv(csvPath);
-  const nameKey = 'Exercise Name';
-  const row = rows.find((r) => {
-    const name = (r[nameKey] || '').replace(/^"|"$/g, '').trim();
-    return name === csvRowName || name.toLowerCase() === csvRowName.toLowerCase();
-  });
-  if (!row) return null;
+  try {
+    const rows = await fetchExerciseCsv(csvPath);
+    const nameKey = 'Exercise Name';
+    const row = rows.find((r) => {
+      const name = (r[nameKey] || '').replace(/^"|"$/g, '').trim();
+      return name === csvRowName || name.toLowerCase() === csvRowName.toLowerCase();
+    });
+    if (!row) return null;
 
-  const primaryVertex = (row['Primary Vertex'] || row['Primary Vertex'] || '').trim();
-  const landmarkA = (row['Landmark A'] || '').trim();
-  const landmarkC = (row['Landmark C'] || '').trim();
-  const startStr = (row['Start Angle Range'] || '').trim();
-  const endStr = (row['End Angle Range'] || '').trim();
-  const errorCondition = (row['Error Condition'] || '').trim();
+    const primaryVertex = (row['Primary Vertex'] || row['Primary Vertex'] || '').trim();
+    const landmarkA = (row['Landmark A'] || '').trim();
+    const landmarkC = (row['Landmark C'] || '').trim();
+    const startStr = (row['Start Angle Range'] || '').trim();
+    const endStr = (row['End Angle Range'] || '').trim();
+    const errorCondition = (row['Error Condition'] || '').trim();
 
-  const startRange = parseAngleRange(startStr);
-  const endRange = parseAngleRange(endStr);
+    const startRange = parseAngleRange(startStr);
+    const endRange = parseAngleRange(endStr);
 
-  return {
-    primaryVertex,
-    landmarkA,
-    landmarkC,
-    startRange,
-    endRange,
-    errorCondition,
-    startRaw: startStr,
-    endRaw: endStr,
-  };
+    return {
+      primaryVertex,
+      landmarkA,
+      landmarkC,
+      startRange,
+      endRange,
+      errorCondition,
+      startRaw: startStr,
+      endRaw: endStr,
+    };
+  } catch (err) {
+    console.warn(`CSV fetch failed for "${exerciseDisplayName}", no hardcoded rule available:`, err);
+    return null;
+  }
 }
 
 /** Validate current angle against rule. Returns { valid, message, currentAngle }. */

@@ -1,0 +1,11 @@
+Exercise Name,Primary Vertex,Landmark A,Landmark C,Start Angle Range,End Angle Range,Error Condition
+Bird-Dog,Hip (23/24),Shoulder (11/12),Ankle (27/28),85∘−95∘,175∘−180∘,Pelvic tilt >10∘
+Dead Bug,Hip (23/24),Knee (25/26),Shoulder (11/12),85∘−95∘,165∘−180∘,Back arching
+Pelvic Tilt,Hip (23/24),Sternum,Knee (25/26),170∘−180∘,160∘ (Tuck),Bending knees
+Cat-Cow,Mid-Back,Hip (23/24),Shoulder (11/12),175∘−180∘,Flexion/Ext.,Bending elbows
+Side Plank,Hip (23/24),Shoulder (11/12),Ankle (27/28),175∘−180∘,Hold for 30s,Hip sag >10∘
+Glute Bridge,Hip (23/24),Shoulder (11/12),Knee (25/26),135∘−145∘,175∘−185∘,Incomplete ext.
+Superman,Mid-Back,Hip (23/24),Shoulder (11/12),180∘ (Prone),165∘−170∘,Bending knees
+Pallof Press,Sternum,Shoulder (11/12),Wrist (15/16),0∘ at chest,175∘−180∘,Trunk rotation
+Knee-to-Chest,Hip (23/24),Shoulder (11/12),Knee (25/26),175∘−180∘,30∘−45∘,Back off floor
+Prone Cobra,Shoulder (11/12),Hip (23/24),Wrist (15/16),180∘ (Prone),140∘−160∘,Feet off floor
