@@ -1,10 +1,15 @@
 import React, { useRef, useEffect, useState, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Webcam from 'react-webcam';
-import { Pose } from '@mediapipe/pose';
-import { Camera } from '@mediapipe/camera_utils';
-import { drawConnectors, drawLandmarks } from '@mediapipe/drawing_utils';
-import { POSE_CONNECTIONS } from '@mediapipe/pose';
+import * as mpPose from '@mediapipe/pose';
+import * as mpCamera from '@mediapipe/camera_utils';
+import * as mpDrawing from '@mediapipe/drawing_utils';
+
+const Pose = mpPose.Pose || window.Pose;
+const POSE_CONNECTIONS = mpPose.POSE_CONNECTIONS;
+const Camera = mpCamera.Camera || window.Camera;
+const { drawConnectors, drawLandmarks } = mpDrawing;
+
 import {
   getAngleRuleForExercise,
   resolveLandmark,
@@ -201,7 +206,8 @@ export default function PoseEstimation() {
 
     (async () => {
       try {
-        const { FaceMesh: FM } = await import('@mediapipe/face_mesh');
+        const faceMeshModule = await import('@mediapipe/face_mesh');
+        const FM = faceMeshModule.FaceMesh || faceMeshModule.default?.FaceMesh || window.FaceMesh;
         const fm = new FM({
           locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`,
         });
