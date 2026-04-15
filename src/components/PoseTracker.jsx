@@ -1,13 +1,10 @@
 import React, { useRef, useEffect, useState } from 'react';
 import Webcam from 'react-webcam';
-import * as mpPose from '@mediapipe/pose';
-import * as mpCamera from '@mediapipe/camera_utils';
-import * as mpDrawing from '@mediapipe/drawing_utils';
-
-const Pose = mpPose.Pose || window.Pose;
-const POSE_CONNECTIONS = mpPose.POSE_CONNECTIONS;
-const Camera = mpCamera.Camera || window.Camera;
-const { drawConnectors, drawLandmarks } = mpDrawing;
+const Pose = window.Pose;
+const POSE_CONNECTIONS = window.POSE_CONNECTIONS;
+const Camera = window.Camera;
+const drawConnectors = window.drawConnectors;
+const drawLandmarks = window.drawLandmarks;
 
 const PoseTracker = () => {
     const webcamRef = useRef(null);
